@@ -20,7 +20,9 @@ Route::get('/', function () {
 Route::get('/posts', 'App\Http\Controllers\PostController@index')->name('post.index');
 Route::get('/posts/create', 'App\Http\Controllers\PostController@create');
 
+
 Route::post('/posts', 'App\Http\Controllers\PostController@store')->name('post.store');
+Route::get('/posts/{post}', 'App\Http\Controllers\PostController@show')->name('post.show');
 
 Route::get('/posts/update', 'App\Http\Controllers\PostController@update');
 Route::get('/posts/delete', 'App\Http\Controllers\PostController@restoreAfterSoftDelete');

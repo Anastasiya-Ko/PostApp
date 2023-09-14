@@ -32,6 +32,11 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
+    public function show(Post $post)
+    {
+        dd($post->title);
+    }
+
     public function update()
     {
         $post = Post::find(5);
