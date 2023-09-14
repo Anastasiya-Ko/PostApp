@@ -12,32 +12,24 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('posts', compact('posts'));
+        return view('post.index', compact('posts'));
     }
 
     public function create()
     {
-        $postsArr = [
-            [
-                'title' => 'first created post',
-                'content' => 'some post',
-                'image' => 'image',
-                'likes' => 50,
-                'is_published' => 1,
-            ],
-            [
-                'title' => 'second created post',
-                'content' => 'some post',
-                'image' => 'image',
-                'likes' => 40,
-                'is_published' => 1,
-            ]
-        ];
+        return view('post.create');
 
-        foreach ($postsArr as $item) {
-            Post::create($item);
-        }
-        dd('created');
+    }
+
+    public function store()
+    {
+        $date = request() -> validate([
+           'title' => 'string',
+           'content' => 'string',
+           'image' => 'string'
+        ]);
+        Post::create($date);
+        return redirect()->route('post.index');
     }
 
     public function update()
