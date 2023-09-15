@@ -34,20 +34,29 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        dd($post->title);
+        return view('post.show', compact('post'));
     }
 
-    public function update()
+    public function edit(Post $post)
     {
-        $post = Post::find(5);
-        $post->update([
-            'title' => 'updated post',
-            'content' => 'some post',
-            'image' => 'image',
-            'likes' => 20,
-            'is_published' => 1,
+        return view('post.edit', compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+        $date = request() -> validate([
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string'
         ]);
-        dd('updated');
+        Post::update($date);
+        return redirect()->route('post.show', $post->id);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('post.index');
     }
 
     public function restoreAfterSoftDelete()
