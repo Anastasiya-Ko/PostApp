@@ -10,10 +10,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $post = Post::find(1);
         $categories = Category::all();
+        dd($post->catrgory);
 
-        return view('post.index', compact('posts'));
+        return view('post.index', compact('post'));
     }
 
     public function create()
@@ -28,15 +29,20 @@ class PostController extends Controller
     public function store()
     {
         $data = request() -> validate([
-           'title' => 'string',
+           'title' => 'required|string',
            'content' => 'string',
            'image' => 'string',
             'category_id' => '',
             'tags' => ''
         ]);
 
-        dd($data);
-        Post::create($data);
+        $tags=$data['tags'];
+        unset($data['tags']);
+
+        $post = Post::create($data);
+
+        $post->tags()->withTimeStamps()->attach($tags);
+
         return redirect()->route('post.index');
     }
 
@@ -48,7 +54,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('post.edit', compact('post', 'categories'));
+        $tags = Tag::all();
+
+        return view('post.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(Post $post)
@@ -57,10 +65,15 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'image' => 'string',
-            'category_id' => ''
+            'category_id' => '',
+            'tags' => ''
 
         ]);
+        $tags=$data['tags'];
+        unset($data['tags']);
+
         $post->update($data);
+        $post->tags()->withTimestamps()->sync($tags);
         return redirect()->route('post.show', $post->id);
     }
 
