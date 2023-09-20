@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
-use JetBrains\PhpStorm\NoReturn;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
