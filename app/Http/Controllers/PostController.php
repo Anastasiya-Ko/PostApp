@@ -11,24 +11,32 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $categories = Category::all();
 
         return view('post.index', compact('posts'));
     }
 
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('post.create', compact('categories', 'tags'));
 
     }
 
     public function store()
     {
-        $date = request() -> validate([
+        $data = request() -> validate([
            'title' => 'string',
            'content' => 'string',
-           'image' => 'string'
+           'image' => 'string',
+            'category_id' => '',
+            'tags' => ''
         ]);
-        Post::create($date);
+
+        dd($data);
+        Post::create($data);
         return redirect()->route('post.index');
     }
 
@@ -39,17 +47,20 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $categories = Category::all();
+        return view('post.edit', compact('post', 'categories'));
     }
 
     public function update(Post $post)
     {
-        $date = request() -> validate([
+        $data = request() -> validate([
             'title' => 'string',
             'content' => 'string',
-            'image' => 'string'
+            'image' => 'string',
+            'category_id' => ''
+
         ]);
-        Post::update($date);
+        $post->update($data);
         return redirect()->route('post.show', $post->id);
     }
 
