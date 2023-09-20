@@ -26,6 +26,6 @@ Route::post('/posts', 'App\Http\Controllers\Post\StoreController')->name('post.s
 Route::get('/posts/{post}', 'App\Http\Controllers\Post\ShowController')->name('post.show');
 Route::get('/posts/{post}/edit', 'App\Http\Controllers\Post\EditController')->name('post.edit');
 Route::patch('/posts/{post}', 'App\Http\Controllers\Post\UpdateController')->name('post.update');
-Route::delete('/posts/{post}', 'App\Http\Controllers\Post\DeleteController')->name('post.delete');
+Route::delete('/posts/{post}', 'App\Http\Controllers\Post\DestroyController')->name('post.delete');
 
 

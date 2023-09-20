@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 
-class DeleteController extends Controller
+class DestroyController extends BaseController
 {
     public function __invoke(Post $post)
     {
