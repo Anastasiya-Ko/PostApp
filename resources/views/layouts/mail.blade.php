@@ -18,18 +18,10 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('main.index') }}">Main</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('post.index') }}">Post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('about.index') }}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
                         </li>
@@ -39,10 +31,9 @@
         </nav>
     <nav>
         <ul>
-            <li><a href="{{ route('main.index') }}">Main</a></li>
+
             <li><a href="{{ route('post.index') }}">Posts</a></li>
-            <li><a href="{{ route('about.index') }}">About</a></li>
-            <li><a href="{{ route('contact.index') }}">Contacts</a></li>
+
         </ul>
     </nav>
     @yield('content')
