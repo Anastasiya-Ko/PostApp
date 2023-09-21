@@ -1,8 +1,8 @@
-@extends('layouts.mail')
+@extends('layouts.main')
 @section('content')
     <div>
         <div>
-            <a href="{{ route('post.create') }}" class="btn btn-primary mb-3" >Add one</a>
+            <a href="{{ route('post.create') }}" class="btn btn-primary mb-3">Add one</a>
         </div>
 
         @foreach($posts as $post)

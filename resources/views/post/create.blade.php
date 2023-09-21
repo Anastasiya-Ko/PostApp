@@ -1,11 +1,12 @@
-@extends('layouts.mail')
+@extends('layouts.main')
 @section('content')
     <div>
         <form action="{{ route('post.store') }}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input value="{{ old('title') }}" type="text" name="title" class="form-control" id="title" placeholder="Title">
+                <input value="{{ old('title') }}" type="text" name="title" class="form-control" id="title"
+                       placeholder="Title">
 
                 @error('title')
                 <p class="text-danger">{{$message}}</p>
@@ -14,7 +15,8 @@
 
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea name="content" class="form-control" id="content" placeholder="Content">{{ old('content') }}</textarea>
+                <textarea name="content" class="form-control" id="content"
+                          placeholder="Content">{{ old('content') }}</textarea>
 
                 @error('content')
                 <p class="text-danger">{{$message}}</p>
@@ -23,7 +25,8 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input value="{{ old('image') }}" type="text" name="image" class="form-control" id="image" placeholder="Image">
+                <input value="{{ old('image') }}" type="text" name="image" class="form-control" id="image"
+                       placeholder="Image">
 
                 @error('image')
                 <p class="text-danger">{{$message}}</p>
@@ -35,8 +38,8 @@
                 <select class="form-select" id="category" name="category_id">
                     @foreach($categories as $category)
                         <option
-                            {{ old('category_id') == $category->id ? 'selected' : ''}}
-                            value="{{ $category->id }}">{{ $category-> title }}</option>
+                                {{ old('category_id') == $category->id ? 'selected' : ''}}
+                                value="{{ $category->id }}">{{ $category-> title }}</option>
                     @endforeach
                 </select>
             </div>

@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'Hello word';
-});
+Route::get('/login', 'App\Http\Controllers\HomeController@index');
 
 
 Route::get('/posts', 'App\Http\Controllers\Post\IndexController')->name('post.index');
@@ -28,4 +26,11 @@ Route::get('/posts/{post}/edit', 'App\Http\Controllers\Post\EditController')->na
 Route::patch('/posts/{post}', 'App\Http\Controllers\Post\UpdateController')->name('post.update');
 Route::delete('/posts/{post}', 'App\Http\Controllers\Post\DestroyController')->name('post.delete');
 
+Route::get('/admin/post', 'App\Http\Controllers\Admin\Post\IndexController')->name('admin.post.index');
 
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

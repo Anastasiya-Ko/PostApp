@@ -1,4 +1,4 @@
-@extends('layouts.mail')
+@extends('layouts.main')
 @section('content')
     <div>
         <div>{{ $post->id }}. {{ $post->title }}</div>
