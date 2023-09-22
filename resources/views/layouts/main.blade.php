@@ -29,14 +29,14 @@
                 </div>
             </div>
         </nav>
-    <nav>
-        <ul>
+        <nav>
+            <ul>
 
-            <li><a href="{{ route('post.index') }}">Posts</a></li>
+                <li><a href="{{ route('post.index') }}">Posts</a></li>
 
-        </ul>
-    </nav>
-    @yield('content')
+            </ul>
+        </nav>
+        @yield('content')
     </div>
 </div>
 </body>
