@@ -27,9 +27,13 @@ Route::get('/posts/{post}/edit', 'App\Http\Controllers\Post\EditController')->na
 Route::patch('/posts/{post}', 'App\Http\Controllers\Post\UpdateController')->name('post.update');
 Route::delete('/posts/{post}', 'App\Http\Controllers\Post\DestroyController')->name('post.delete');
 
-Route::get('/admin/post', 'App\Http\Controllers\Admin\Post\IndexController')->name('admin.post.index');
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+   Route::group(['namespace' => 'Post'], function () {
+       Route::get('/post', 'IndexController')->name('admin.post.index');
+   });
+});
 
-
+//       Route::get('/admin/post', 'App\Http\Controllers\Admin\Post\IndexController')->name('admin.post.index');
 
 
 Auth::routes();
