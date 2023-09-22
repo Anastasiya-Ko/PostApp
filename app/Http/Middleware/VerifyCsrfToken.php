@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        //здесь прописывам роут, на который больше не будет распространяться @csrf
+        //это нужно для работы методов пост и патч в постмане
+        '/posts',
+        '/posts/*'
     ];
 }

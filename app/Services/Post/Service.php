@@ -15,6 +15,8 @@ class Service
         $post = Post::create($data);
 
         $post->tags()->withTimeStamps()->attach($tags);
+
+        return $post;
     }
 
     public function update($post, $data)
@@ -24,5 +26,6 @@ class Service
 
         $post->update($data);
         $post->tags()->withTimestamps()->sync($tags);
+        return $post->fresh();
     }
 }
