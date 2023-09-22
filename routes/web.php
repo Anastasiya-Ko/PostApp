@@ -33,8 +33,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 
    });
 });
 
-//       Route::get('/admin/post', 'App\Http\Controllers\Admin\Post\IndexController')->name('admin.post.index');
-
 
 Auth::routes();
 

@@ -11,29 +11,21 @@
 <body>
 <div class="container">
     <div class="row">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('post.index') }}">Post</a>
-
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
+                </li>
+            </ul>
         </nav>
-        <nav>
-            <ul>
 
-                <li><a href="{{ route('post.index') }}">Posts</a></li>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
+                @can('view', auth()->user())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.post.index') }}">Admin</a>
+                </li>
+                @endcan
             </ul>
         </nav>
         @yield('content')
