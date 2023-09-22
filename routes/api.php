@@ -32,5 +32,11 @@ Route::group([
 });
 Route::group(['namespace' => 'App\Http\Controllers\Post', 'middleware' => 'jwt.auth'], function () {
     Route::get('/posts', 'IndexController');
+    Route::get('/posts/create', 'App\Http\Controllers\Post\CreateController');
+    Route::post('/posts', 'App\Http\Controllers\Post\StoreController');
+    Route::get('/posts/{post}', 'App\Http\Controllers\Post\ShowController');
+    Route::get('/posts/{post}/edit', 'App\Http\Controllers\Post\EditController');
+    Route::patch('/posts/{post}', 'App\Http\Controllers\Post\UpdateController');
+    Route::delete('/posts/{post}', 'App\Http\Controllers\Post\DestroyController');
 });
 

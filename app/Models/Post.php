@@ -16,6 +16,7 @@ class Post extends Model
     //разрешение дл редактирования данных в бд
     protected $guarded = false;
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
